@@ -53,7 +53,8 @@ btn.addEventListener('click', (event) => {
 }); 
 
 */
-let btn = document.querySelector('button'),
+//let btn = document.querySelector('button'),
+let btn = document.querySelectorAll('button'), //Возвращает псевдомассив
  //    i = 0,
      overlay = document.querySelector('.overlay');
 
@@ -67,5 +68,21 @@ let deleteElement = (event) => {
    //}
 };
 
-btn.addEventListener('click', deleteElement);
+btn.forEach(item => {
+ //   item.addEventListener('click', deleteElement,);
+    item.addEventListener('click', deleteElement, {once: true}); // Опции событий
+});
+
+//btn.addEventListener('click', deleteElement);
 overlay.addEventListener('click', deleteElement);
+
+
+// Отмена стандатрого поведения браузера
+
+let link = document.querySelector('a');
+
+link.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    console.log(event.target);
+});
